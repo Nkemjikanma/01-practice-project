@@ -1,0 +1,13 @@
+name: Issues
+
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  print-details:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: output details
+        run: echo "${{github}}"

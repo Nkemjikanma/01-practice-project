@@ -1,0 +1,26 @@
+name: Prepare Deploy
+on: push
+
+jobs:
+  prepare_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+
+      # since node is already installed, just install deps
+      - name: install deps
+        run: npm ci
+
+      - name: run lint
+        run: npm lint
+
+      - name: test project
+        run: npm run test
+
+      - name: build
+        run: npm run build
+
+      - name: deploy
+        run: echo "deploying..."
